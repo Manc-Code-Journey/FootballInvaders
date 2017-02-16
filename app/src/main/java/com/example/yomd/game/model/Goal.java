@@ -6,5 +6,5 @@ package com.example.yomd.game.model;
 public class Goal {
     //hej
     //Hejjjjjj
-    //hejpådig
+
 }
