@@ -15,13 +15,13 @@ import com.example.yomd.simpleandroidgdf_monday.Assets;
 public class MenuState extends State {
 
     //två UIknappar
-    private UIButton playButton, scoreButton;
+    private UIButton playButton, scoreButton, selectlevelbutton;
 
     @Override
     public void init() {
         //skapa de två knapparna
-         playButton = new UIButton(316,227,484,286,
-                 Assets.start,Assets.startDown);
+         selectlevelbutton = new UIButton(316,227,484,286,
+                 Assets.selectlevel,Assets.selectlevel);
         scoreButton = new UIButton(316,300,484,359,
                 Assets.score, Assets.scoreDown);
     }
@@ -36,9 +36,9 @@ public class MenuState extends State {
         //Rita upp welcome bilden på skärmen
         //Hämta bilden från Assets och
         //x- och y-värdet för övre vänstra hörnet är (0,0)
-        g.drawImage(Assets.welcome,0,0);
+        g.drawImage(Assets.fotbollsplanmeny,0,0);
         //rita ut de två knapparna
-        playButton.render(g);
+        selectlevelbutton.render(g);
         scoreButton.render(g);
     }
 
