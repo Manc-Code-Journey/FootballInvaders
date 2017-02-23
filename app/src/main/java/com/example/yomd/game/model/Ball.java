@@ -5,6 +5,8 @@ package com.example.yomd.game.model;
  */
 public class Ball {
 
+    //variabler för x- och y-position
+    private float x,y ;
 
 
 

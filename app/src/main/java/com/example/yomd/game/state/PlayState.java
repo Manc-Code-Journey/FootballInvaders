@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.view.MotionEvent;
 
 import com.example.yomd.framework.util.Painter;
+import com.example.yomd.game.model.Ball;
 import com.example.yomd.game.model.Block;
 import com.example.yomd.game.model.Cloud;
 import com.example.yomd.game.model.Player;
