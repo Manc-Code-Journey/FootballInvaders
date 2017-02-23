@@ -15,15 +15,16 @@ import com.example.yomd.simpleandroidgdf_monday.Assets;
 public class MenuState extends State {
 
     //två UIknappar
-    private UIButton playButton, scoreButton, selectlevelbutton;
+    private UIButton  scoreButton, selectlevelbutton;
 
     @Override
     public void init() {
         //skapa de två knapparna
-         selectlevelbutton = new UIButton(316,227,484,286,
+        selectlevelbutton = new UIButton(316,227,484,286,
                  Assets.selectlevel,Assets.selectlevel);
         scoreButton = new UIButton(316,300,484,359,
                 Assets.score, Assets.scoreDown);
+
     }
 
     @Override
@@ -46,18 +47,18 @@ public class MenuState extends State {
     public boolean onTouch(MotionEvent e, int scaledX, int scaledY) {
         //Kolla vad man tryckt på
         if(e.getAction() == MotionEvent.ACTION_DOWN){
-            playButton.onTouchDown(scaledX,scaledY);
+            selectlevelbutton.onTouchDown(scaledX,scaledY);
             scoreButton.onTouchDown(scaledX,scaledY);
         }
         //Reagera när man tryckt klart på skärmen
         if(e.getAction() == MotionEvent.ACTION_UP){
-            //om playknappen ä r aktiv och
+            //om playknappen är aktiv och
             //man släpper skärmen
-            if(playButton.isPressed(scaledX,scaledY)){
-                playButton.cancel();
+            if(selectlevelbutton.isPressed(scaledX,scaledY)){
+                selectlevelbutton.cancel();
                 //se till att vi går till spelläget
                 //att spelet startar!
-                setCurrentState(new PlayState());
+                setCurrentState(new SelectLevelState());
 
             }else if(scoreButton.isPressed(scaledX,scaledY)){
                 scoreButton.cancel();
@@ -65,7 +66,7 @@ public class MenuState extends State {
                 //Log.d("MenuState", "Score Button Pressed");
                 setCurrentState(new ScoreState());
             }else{
-                playButton.cancel();
+                selectlevelbutton.cancel();
                 scoreButton.cancel();
             }
         }

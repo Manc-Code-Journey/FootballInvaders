@@ -44,10 +44,10 @@ public class PlayState extends State {
     //metod som initerar vårt spel
     public void init() {
         //skapa spelaren
-        //Spelarens startposition är x = 160
+        //Spelarens startposition är i mitten längst ner av skärmen
         //y = spelplanens höjd - 45 - spelarens höjd
         //sen anger vi spelarens bredd och höjd
-        player = new Player(160,
+        player = new Player(GameMainActivity.GAME_WIDTH/2-PLAYER_WIDTH/2,
                 GameMainActivity.GAME_HEIGHT - 45 - PLAYER_HEIGHT,
                 PLAYER_WIDTH,PLAYER_HEIGHT);
         //skapa ArrayList för att placera alla blocken i
