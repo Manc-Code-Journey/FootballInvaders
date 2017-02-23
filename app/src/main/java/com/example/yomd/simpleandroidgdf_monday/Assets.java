@@ -24,7 +24,8 @@ public class Assets {
     //plus alla andra bilder o ljud till spelet
     public static Bitmap welcome, block, cloud1,cloud2,duck,
             grass,jump,run1,run2,run3,run4,run5,scoreDown,
-            score,startDown,start,fotbollsplanmeny, selectlevel, levelplan;
+            score,startDown,start,fotbollsplanmeny, selectlevel, levelplan,
+            level1, level2, level3;
 
     //animation när gubben springer
     public static Animation runAnim;
@@ -56,6 +57,10 @@ public class Assets {
         fotbollsplanmeny = loadBitmap("fotbollsplanmeny.jpg", false);
         selectlevel = loadBitmap("selectlevel.png", true);
         levelplan = loadBitmap("levelplan.png", true);
+        level1 = loadBitmap("level1.png", true);
+        level2 = loadBitmap("level2.png", true);
+        level3 = loadBitmap("level3.png", true);
+
 
 
         //Ladda in animationen när gubben springer

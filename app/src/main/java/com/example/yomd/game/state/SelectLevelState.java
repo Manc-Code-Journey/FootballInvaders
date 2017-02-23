@@ -15,17 +15,15 @@ import com.example.yomd.simpleandroidgdf_monday.GameMainActivity;
 public class SelectLevelState extends State{
 
 
-    //3 UIknappar
+    //tre UIknappar
     private UIButton level1, level2, level3;
 
     @Override
     public void init() {
-        //skapa de två knapparna
-        level1 = new UIButton(316,227,484,286,
-                Assets.selectlevel,Assets.selectlevel);
-        scoreButton = new UIButton(316,300,484,359,
-                Assets.score, Assets.scoreDown);
-
+        //skapa de tre knapparna
+        level1 = new UIButton(40, 90, 120, 167, Assets.level1,Assets.level1);
+        level2 = new UIButton(150, 90, 230, 167, Assets.level2, Assets.level2);
+        level3 = new UIButton(260, 90, 340, 167, Assets.level3, Assets.level3);
     }
 
 
@@ -41,6 +39,9 @@ public class SelectLevelState extends State{
         //x- och y-värdet för övre vänstra hörnet är (0,0)
         g.drawImage(Assets.levelplan,0,0);
         renderSelect(g);
+        level1.render(g);
+        level2.render(g);
+        level3.render(g);
         }
 
     //rita ut poängen i spelet
