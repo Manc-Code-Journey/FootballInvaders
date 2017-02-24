@@ -16,14 +16,15 @@ public class SelectLevelState extends State {
 
 
     //tre UIknappar
-    private UIButton level1, level2, level3;
+    private UIButton level1, level2, level3, exitButton;
 
     @Override
     public void init() {
         //skapa de tre knapparna
-        level1 = new UIButton(40, 90, 120, 167, Assets.level1, Assets.level1);
-        level2 = new UIButton(150, 90, 230, 167, Assets.level2, Assets.level2);
-        level3 = new UIButton(260, 90, 340, 167, Assets.level3, Assets.level3);
+        level1 = new UIButton(40, 140, 120, 217, Assets.level1, Assets.level1);
+        level2 = new UIButton(150, 140, 230, 217, Assets.level2, Assets.level2);
+        level3 = new UIButton(260, 140, 340, 217, Assets.level3, Assets.level3);
+        exitButton = new UIButton(0, 0, 100, 52, Assets.exit, Assets.exit);
     }
 
 
@@ -42,6 +43,7 @@ public class SelectLevelState extends State {
         level1.render(g);
         level2.render(g);
         level3.render(g);
+        exitButton.render(g);
     }
 
     //rita ut poängen i spelet
@@ -59,7 +61,7 @@ public class SelectLevelState extends State {
         //Kolla vad man tryckt på
         if (e.getAction() == MotionEvent.ACTION_DOWN) {
             level1.onTouchDown(scaledX, scaledY);
-            //scoreButton.onTouchDown(scaledX,scaledY);
+            exitButton.onTouchDown(scaledX,scaledY);
         }
         //Reagera när man tryckt klart på skärmen
         if (e.getAction() == MotionEvent.ACTION_UP) {
@@ -71,14 +73,14 @@ public class SelectLevelState extends State {
                 //att spelet startar!
                 setCurrentState(new LevelOneState());
 
-            }//else if(scoreButton.isPressed(scaledX,scaledY)){
-            //scoreButton.cancel();
-            //logga att man tryckt ner scorebutton
-            //Log.d("MenuState", "Score Button Pressed");
-            //setCurrentState(new ScoreState());
-            else {
+            }else if(exitButton.isPressed(scaledX,scaledY)) {
+                exitButton.cancel();
+                //logga att man tryckt ner scorebutton
+                //Log.d("MenuState", "Score Button Pressed");
+                setCurrentState(new MenuState());
+            }else {
                 level1.cancel();
-                //scoreButton.cancel();
+                exitButton.cancel();
             }
         }
         return true;
