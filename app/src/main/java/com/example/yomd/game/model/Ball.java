@@ -9,7 +9,7 @@ public class Ball {
 
     //variabler för x- och y-position
     private float x, y;
-    private int width, height, velY;
+    private int width, height;
     private Rect rect;
 
     //konstruktorn till klassen

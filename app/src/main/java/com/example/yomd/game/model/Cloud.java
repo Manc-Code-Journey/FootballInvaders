@@ -1,5 +1,7 @@
 package com.example.yomd.game.model;
 
+import android.graphics.Rect;
+
 import com.example.yomd.framework.util.RandomNumberGenerator;
 
 /**
