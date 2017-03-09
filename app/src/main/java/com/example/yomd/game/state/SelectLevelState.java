@@ -61,6 +61,8 @@ public class SelectLevelState extends State {
         //Kolla vad man tryckt på
         if (e.getAction() == MotionEvent.ACTION_DOWN) {
             level1.onTouchDown(scaledX, scaledY);
+            level2.onTouchDown(scaledX, scaledY);
+            level3.onTouchDown(scaledX, scaledY);
             exitButton.onTouchDown(scaledX,scaledY);
         }
         //Reagera när man tryckt klart på skärmen
@@ -72,14 +74,19 @@ public class SelectLevelState extends State {
                 //se till att vi går till spelläget
                 //att spelet startar!
                 setCurrentState(new LevelOneState());
-
-            }else if(exitButton.isPressed(scaledX,scaledY)) {
+            }else if (level2.isPressed(scaledX, scaledY)) {
+                level2.cancel();
+                setCurrentState(new LevelTwoState());
+            }else if (level3.isPressed(scaledX, scaledY)) {
+                level3.cancel();
+                setCurrentState(new LevelThreeState());
+            }else if (exitButton.isPressed(scaledX,scaledY)) {
                 exitButton.cancel();
-                //logga att man tryckt ner scorebutton
-                //Log.d("MenuState", "Score Button Pressed");
                 setCurrentState(new MenuState());
             }else {
                 level1.cancel();
+                level2.cancel();
+                level3.cancel();
                 exitButton.cancel();
             }
         }

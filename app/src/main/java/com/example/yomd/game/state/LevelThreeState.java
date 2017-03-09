@@ -9,9 +9,10 @@ import com.example.yomd.simpleandroidgdf_monday.Assets;
 import com.example.yomd.simpleandroidgdf_monday.GameMainActivity;
 
 /**
- * Created by tc980615 on 2017-02-23.
+ * Created by Ann-Marie on 2017-03-09.
  */
-public class LevelTwoState extends State {
+
+public class LevelThreeState extends State{
 
     //tre UIknappar
     private UIButton exitButton;
@@ -24,8 +25,8 @@ public class LevelTwoState extends State {
     @Override
     public void init() {
         ball = new Ball(GameMainActivity.GAME_WIDTH / 2 - BALL_WIDTH / 2,
-            GameMainActivity.GAME_HEIGHT - 45 - BALL_HEIGHT,
-            BALL_WIDTH, BALL_HEIGHT);
+                GameMainActivity.GAME_HEIGHT - 45 - BALL_HEIGHT,
+                BALL_WIDTH, BALL_HEIGHT);
         exitButton = new UIButton(0, 0, 100, 52, Assets.exit, Assets.exit);
 
     }
@@ -64,7 +65,6 @@ public class LevelTwoState extends State {
         } else {
             exitButton.cancel();
         }
-
         return true;
     }
 }
