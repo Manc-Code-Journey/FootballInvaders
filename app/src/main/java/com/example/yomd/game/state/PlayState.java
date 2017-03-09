@@ -9,6 +9,7 @@ import com.example.yomd.framework.util.Painter;
 import com.example.yomd.game.model.Ball;
 import com.example.yomd.game.model.Block;
 import com.example.yomd.game.model.Cloud;
+import com.example.yomd.game.model.Goal;
 import com.example.yomd.game.model.Player;
 import com.example.yomd.simpleandroidgdf_monday.Assets;
 import com.example.yomd.simpleandroidgdf_monday.GameMainActivity;
@@ -40,10 +41,21 @@ public class PlayState extends State {
     private static final int PLAYER_HEIGHT = 92;
 
     private float recentTouchY;
+    private Goal myGoal;
+
+    private LevelOneState lOneState;
+    private LevelTwoState lTwoState;
 
     @Override
     //metod som initerar vårt spel
     public void init() {
+
+        if(GameMainActivity.currentLevel == 1){
+            lOneState.init();
+        }
+        if(GameMainActivity.currentLevel == 2){
+            lTwoState.init();
+        }
         //skapa spelaren
         //Spelarens startposition är i mitten längst ner av skärmen
         //y = spelplanens höjd - 45 - spelarens höjd
@@ -75,6 +87,13 @@ public class PlayState extends State {
     @Override
     //metoden som uppdaterar spelet (flyttar på grejer o.s.v.)
     public void update(float delta) {
+
+        if(GameMainActivity.currentLevel == 1){
+            lOneState.update(delta);
+        }
+        if(GameMainActivity.currentLevel == 2){
+            lTwoState.update(delta);
+        }
         //kolla om spelaren inte ! lever
         if(!player.isAlive()){
             //för att vi ska kunna köra vår kod kommentera
@@ -125,6 +144,13 @@ public class PlayState extends State {
     @Override
     //metod som ritar ut allt på spelet
     public void render(Painter g) {
+
+        if(GameMainActivity.currentLevel == 1){
+            lOneState.render(g);
+        }
+        if(GameMainActivity.currentLevel == 2){
+            lTwoState.render(g);
+        }
         //bestäm en färg
         g.setColor(Color.rgb(208,244,247));
         //Rita ut denna färg över hela spelplan
@@ -197,7 +223,14 @@ public class PlayState extends State {
     @Override
     public boolean onTouch(MotionEvent e, int scaledX, int scaledY) {
 
-        if(e.getAction() == MotionEvent.ACTION_DOWN){
+        if(GameMainActivity.currentLevel == 1){
+            lOneState.onTouch(e,scaledX,scaledY);
+        }
+        if(GameMainActivity.currentLevel == 2){
+            lTwoState.onTouch(e,scaledX,scaledY);
+        }
+
+            if(e.getAction() == MotionEvent.ACTION_DOWN){
             recentTouchY = scaledY;
         }else if(e.getAction() == MotionEvent.ACTION_UP){
             //om den som spelar har dragit fingret mer än 50 pixlar uppåt
