@@ -25,7 +25,7 @@ public class Assets {
     public static Bitmap welcome, block, cloud1,cloud2,duck,
             grass,jump,run1,run2,run3,run4,run5,scoreDown,
             score,startDown,start,fotbollsplanmeny, selectlevel, levelplan,
-            level1, level2, level3, footballplayer, football, exit;
+            level1, level2, level3, footballplayer, football, exit, goal1;
 
     //animation när gubben springer
     public static Animation runAnim;
@@ -63,6 +63,7 @@ public class Assets {
         footballplayer = loadBitmap("footballplayer.png", true);
         football = loadBitmap("football.png", true);
         exit = loadBitmap("exit.png", true);
+        goal1 = loadBitmap("goal1.png", true);
 
 
         //Ladda in animationen när gubben springer
