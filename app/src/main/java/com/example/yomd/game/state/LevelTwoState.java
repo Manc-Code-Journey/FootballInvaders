@@ -12,7 +12,7 @@ import com.example.yomd.simpleandroidgdf_monday.GameMainActivity;
  * Created by tc980615 on 2017-02-23.
  */
 public class LevelTwoState extends State {
-
+//hej
     //tre UIknappar
     private UIButton exitButton;
 
