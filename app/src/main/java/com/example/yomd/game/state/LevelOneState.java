@@ -26,8 +26,8 @@ public class LevelOneState extends State {
     private static final int BALL_HEIGHT = 85;
 
     private Goal goal;
-    private static final int GOAL_WIDTH = 350;
-    private static final int GOAL_HEIGHT = 151;
+    private static final int GOAL_WIDTH = 250;
+    private static final int GOAL_HEIGHT = 136;
 
 
     @Override
