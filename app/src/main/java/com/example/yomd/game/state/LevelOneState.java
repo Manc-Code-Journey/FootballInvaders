@@ -40,7 +40,7 @@ public class LevelOneState extends State {
 
     @Override
     public void render(Painter g) {
-        g.drawImage(Assets.fotbollsplanmeny, 0, 0);
+        g.drawImage(Assets.levelplan, 0, 0);
         renderBall(g);
         exitButton.render(g);
     }
