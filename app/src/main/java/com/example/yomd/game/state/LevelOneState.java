@@ -7,6 +7,7 @@ import com.example.yomd.framework.util.Painter;
 import com.example.yomd.framework.util.UIButton;
 import com.example.yomd.game.model.Ball;
 import com.example.yomd.game.model.Cloud;
+import com.example.yomd.game.model.Goal;
 import com.example.yomd.simpleandroidgdf_monday.Assets;
 import com.example.yomd.simpleandroidgdf_monday.GameMainActivity;
 
@@ -24,13 +25,21 @@ public class LevelOneState extends State {
     private static final int BALL_WIDTH = 158;
     private static final int BALL_HEIGHT = 85;
 
+    private Goal goal;
+    private static final int GOAL_WIDTH = 350;
+    private static final int GOAL_HEIGHT = 151;
+
 
     @Override
     public void init() {
         ball = new Ball(GameMainActivity.GAME_WIDTH / 2 - BALL_WIDTH / 2,
                 GameMainActivity.GAME_HEIGHT - 45 - BALL_HEIGHT,
                 BALL_WIDTH, BALL_HEIGHT);
+        goal = new Goal(GameMainActivity.GAME_WIDTH / 2 - GOAL_WIDTH / 2,
+                GameMainActivity.GAME_HEIGHT - 300 - GOAL_HEIGHT,
+                GOAL_WIDTH, GOAL_HEIGHT);
         exitButton = new UIButton(0, 0, 100, 52, Assets.exit, Assets.exit);
+
     }
 
     @Override
@@ -42,6 +51,7 @@ public class LevelOneState extends State {
     public void render(Painter g) {
         g.drawImage(Assets.levelplan, 0, 0);
         renderBall(g);
+        renderGoal(g);
         exitButton.render(g);
     }
 
@@ -49,6 +59,9 @@ public class LevelOneState extends State {
         g.drawImage(Assets.football, (int) ball.getX(), (int) ball.getY(), BALL_WIDTH, BALL_HEIGHT);
     }
 
+    private void renderGoal (Painter g) {
+        g.drawImage(Assets.goal1, (int) goal.getX(), (int) goal.getY(), GOAL_WIDTH, GOAL_HEIGHT);
+    }
 
     @Override
     public boolean onTouch(MotionEvent e, int scaledX, int scaledY) {

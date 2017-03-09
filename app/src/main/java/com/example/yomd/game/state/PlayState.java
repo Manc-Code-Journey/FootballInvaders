@@ -207,6 +207,7 @@ public class PlayState extends State {
             }else if(scaledY - recentTouchY > 50){
                 player.duck();
             }
+
         }
         return true;
     }
