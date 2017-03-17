@@ -37,6 +37,12 @@ public class Ball {
         rect.set((int) x + 10, (int) y, (int) x + (width - 20),
                 (int) y + height);
     }
+
+    public void setPosition (float x, float y) {
+        this.x = x;
+        this.y = y;
+    }
+
     //metoder för att hämta spelarens x- och
     //y-position
     public float getX(){

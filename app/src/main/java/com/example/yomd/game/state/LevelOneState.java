@@ -29,6 +29,9 @@ public class LevelOneState extends State {
     private static final int GOAL_WIDTH = 250;
     private static final int GOAL_HEIGHT = 136;
 
+    private float touchedX;
+    private float touchedY;
+
 
     @Override
     public void init() {
@@ -45,35 +48,43 @@ public class LevelOneState extends State {
     @Override
     public void update(float delta) {
         ball.update(delta);
+        if(ball.getX() < 0){
+            ball.setVelocities(0,0);
+        }
     }
 
     @Override
     public void render(Painter g) {
         g.drawImage(Assets.levelplan, 0, 0);
-        renderBall(g);
         renderGoal(g);
+        renderBall(g);
         exitButton.render(g);
-    }
-
-    private void renderBall(Painter g) {
-        g.drawImage(Assets.football, (int) ball.getX(), (int) ball.getY(), BALL_WIDTH, BALL_HEIGHT);
     }
 
     private void renderGoal (Painter g) {
         g.drawImage(Assets.goal1, (int) goal.getX(), (int) goal.getY(), GOAL_WIDTH, GOAL_HEIGHT);
     }
+    private void renderBall(Painter g) {
+        g.drawImage(Assets.football, (int) ball.getX(), (int) ball.getY(), BALL_WIDTH, BALL_HEIGHT);
+    }
+
+
 
     @Override
     public boolean onTouch(MotionEvent e, int scaledX, int scaledY) {
         //Kolla vad man tryckt på
         if (e.getAction() == MotionEvent.ACTION_DOWN) {
             exitButton.onTouchDown(scaledX, scaledY);
+            touchedX = scaledX;
+            touchedY = scaledY;
         }
         //Reagera när man tryckt klart på skärmen
         if (e.getAction() == MotionEvent.ACTION_UP) {
+            ball.setVelocities(scaledX - touchedX, scaledY - touchedY);
+
             //om playknappen är aktiv och
             //man släpper skärmen
-            } if (exitButton.isPressed(scaledX, scaledY)) {
+            if (exitButton.isPressed(scaledX, scaledY)) {
                 exitButton.cancel();
                 //logga att man tryckt ner scorebutton
                 //Log.d("MenuState", "Score Button Pressed");
@@ -81,6 +92,7 @@ public class LevelOneState extends State {
             } else {
                 exitButton.cancel();
             }
+        }
 
         return true;
     }
