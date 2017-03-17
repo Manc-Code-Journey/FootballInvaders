@@ -44,7 +44,7 @@ public class LevelOneState extends State {
 
     @Override
     public void update(float delta) {
-
+        ball.update(delta);
     }
 
     @Override
