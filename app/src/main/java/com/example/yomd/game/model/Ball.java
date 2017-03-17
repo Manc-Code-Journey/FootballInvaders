@@ -11,6 +11,9 @@ public class Ball {
     private float x, y;
     private int width, height;
     private Rect rect;
+    private float velX=0;
+    private float velY=0;
+
 
     //konstruktorn till klassen
     //tar fyra inparametrar x- och y-position
@@ -24,7 +27,11 @@ public class Ball {
         //Bollens rektangel
         rect = new Rect();
     }
-
+    public void update(float delta){
+        x = x + velX * delta;
+        y = y + velY * delta;
+        updateRects();
+    }
     //metod för att uppdatera bollens rektangel
     public void updateRects() {
         rect.set((int) x + 10, (int) y, (int) x + (width - 20),
@@ -38,6 +45,8 @@ public class Ball {
     public float getY(){
         return y;
     }
+    public float getVelY(){ return velY; }
+    public float getVelX(){ return velX; }
     //metoder som returnerar bredd
     // och höjd för spelaren
     public int getWidth(){
@@ -46,6 +55,12 @@ public class Ball {
     public int getHeight(){
         return height;
     }
+
+    public void setVelocities(float velX, float velY){
+        this.velX = velX;
+        this.velY = velY;
+    }
+
 }
 
 

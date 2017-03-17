@@ -236,7 +236,7 @@ public class PlayState extends State {
             //om den som spelar har dragit fingret mer än 50 pixlar uppåt
             //annars om spelaren dragit fingret mer än 50 pixlar nedåt
             if(scaledY - recentTouchY < -50){
-                player.jump();
+                player.getVelY();
             }else if(scaledY - recentTouchY > 50){
                 player.duck();
             }
