@@ -73,12 +73,15 @@ public class SelectLevelState extends State {
                 level1.cancel();
                 //se till att vi går till spelläget
                 //att spelet startar!
+                GameMainActivity.currentLevel = 1;
                 setCurrentState(new LevelOneState());
             }else if (level2.isPressed(scaledX, scaledY)) {
                 level2.cancel();
+                GameMainActivity.currentLevel = 2;
                 setCurrentState(new LevelTwoState());
             }else if (level3.isPressed(scaledX, scaledY)) {
                 level3.cancel();
+                GameMainActivity.currentLevel = 3;
                 setCurrentState(new LevelThreeState());
             }else if (exitButton.isPressed(scaledX,scaledY)) {
                 exitButton.cancel();

@@ -22,6 +22,8 @@ public class GameMainActivity extends AppCompatActivity {
     private static final String HIGHSCORE_KEY = "highScoreKey";
     private static int highScore;
 
+    public static int currentLevel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,7 @@ public class GameMainActivity extends AppCompatActivity {
         setContentView(sGame);
         //för att skärmen inte ska slockna när vi spelar spelet
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        currentLevel = 0;
     }//här slutar onCreate metoden
 
     //metod för att sätta highscore
