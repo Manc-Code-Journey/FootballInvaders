@@ -8,6 +8,7 @@ import com.example.yomd.framework.util.UIButton;
 import com.example.yomd.game.model.Ball;
 import com.example.yomd.game.model.Cloud;
 import com.example.yomd.game.model.Goal;
+import com.example.yomd.game.model.Life;
 import com.example.yomd.simpleandroidgdf_monday.Assets;
 import com.example.yomd.simpleandroidgdf_monday.GameMainActivity;
 
@@ -29,6 +30,8 @@ public class LevelOneState extends State {
     private static final int GOAL_WIDTH = 250;
     private static final int GOAL_HEIGHT = 136;
 
+    private Life life;
+
     private float touchedX;
     private float touchedY;
 
@@ -41,6 +44,9 @@ public class LevelOneState extends State {
         goal = new Goal(GameMainActivity.GAME_WIDTH / 2 - GOAL_WIDTH / 2,
                 GameMainActivity.GAME_HEIGHT - 300 - GOAL_HEIGHT,
                 GOAL_WIDTH, GOAL_HEIGHT);
+        life = new Life(GameMainActivity.GAME_WIDTH - GameMainActivity.GAME_WIDTH / 3,
+                GameMainActivity.GAME_HEIGHT - 32 - BALL_HEIGHT);
+
         exitButton = new UIButton(0, 0, 100, 52, Assets.exit, Assets.exit);
 
     }
@@ -59,6 +65,7 @@ public class LevelOneState extends State {
         renderGoal(g);
         renderBall(g);
         exitButton.render(g);
+        life.render(g);
     }
 
     private void renderGoal (Painter g) {
@@ -67,6 +74,7 @@ public class LevelOneState extends State {
     private void renderBall(Painter g) {
         g.drawImage(Assets.football, (int) ball.getX(), (int) ball.getY(), BALL_WIDTH, BALL_HEIGHT);
     }
+
 
 
 
