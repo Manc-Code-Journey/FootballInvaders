@@ -35,7 +35,6 @@ public class LevelOneState extends State {
     private float touchedX;
     private float touchedY;
 
-    private boolean canShoot = true;
 
     @Override
     public void init() {
@@ -57,17 +56,11 @@ public class LevelOneState extends State {
         ball.update(delta);
         if(ball.getX() +  ball.getWidth() < 0 || ball.getY() + ball.getHeight() < 0 ||
                 ball.getX() > GameMainActivity.GAME_WIDTH
-                || ball.getY() > GameMainActivity.GAME_HEIGHT) {
-            ball.setVelocities(0, 0);
+                || ball.getY() > GameMainActivity.GAME_HEIGHT){
+            ball.setVelocities(0,0);
             ball.setPosition(GameMainActivity.GAME_WIDTH / 2 - BALL_WIDTH / 2,
                     GameMainActivity.GAME_HEIGHT - 45 - BALL_HEIGHT);
             life.decreaseLife();
-            canShoot = true;
-        }
-        if(!life.isAlive()) {
-            //för att vi ska kunna köra vår kod kommentera
-            //bort denna rad
-            setCurrentState(new GameOverState());
         }
     }
 
@@ -100,10 +93,7 @@ public class LevelOneState extends State {
         }
         //Reagera när man tryckt klart på skärmen
         if (e.getAction() == MotionEvent.ACTION_UP) {
-            if(canShoot){
-                canShoot = false;
-                ball.setVelocities(scaledX - touchedX, scaledY - touchedY);
-            }
+            ball.setVelocities(scaledX - touchedX, scaledY - touchedY);
 
             //om playknappen är aktiv och
             //man släpper skärmen
@@ -117,8 +107,10 @@ public class LevelOneState extends State {
             }
         }
 
+
         return true;
     }
+
 
 }
 

@@ -2,6 +2,9 @@ package com.example.yomd.game.model;
 
 import android.graphics.Rect;
 
+import com.example.yomd.framework.util.RandomNumberGenerator;
+import com.example.yomd.game.state.SelectLevelState;
+
 /**
  * Created by tc980615 on 2017-02-16.
  */
@@ -43,7 +46,9 @@ public class Goal {
     public int getWidth(){
         return width;
     }
-    public int getHeight(){
+    public int getHeight() {
         return height;
     }
+
+
 }
