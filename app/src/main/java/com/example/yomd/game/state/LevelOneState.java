@@ -54,8 +54,13 @@ public class LevelOneState extends State {
     @Override
     public void update(float delta) {
         ball.update(delta);
-        if(ball.getX() < 0){
+        if(ball.getX() +  ball.getWidth() < 0 || ball.getY() + ball.getHeight() < 0 ||
+                ball.getX() > GameMainActivity.GAME_WIDTH
+                || ball.getY() > GameMainActivity.GAME_HEIGHT){
             ball.setVelocities(0,0);
+            ball.setPosition(GameMainActivity.GAME_WIDTH / 2 - BALL_WIDTH / 2,
+                    GameMainActivity.GAME_HEIGHT - 45 - BALL_HEIGHT);
+            life.decreaseLife();
         }
     }
 
