@@ -98,7 +98,7 @@ public class PlayState extends State {
         if(!player.isAlive()){
             //för att vi ska kunna köra vår kod kommentera
             //bort denna rad
-            setCurrentState(new GameOverState(playerScore/100));
+
             //för att bara avsluta appen (tillfälligt bara)
             //System.exit(0);
         }

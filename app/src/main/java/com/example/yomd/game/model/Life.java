@@ -26,7 +26,7 @@ public class Life {
         this.y = y;
     }
     public void render(Painter g){
-        for (int i = 0; i < lifes; i++) {
+        for (int i = 0; i < lifes - 1; i++) {
             g.drawImage(Assets.football, (int) x + LIFE_WIDTH / 2 * i,
                     (int) y, LIFE_WIDTH, LIFE_HEIGHT);
         }
@@ -34,6 +34,14 @@ public class Life {
 
     public void decreaseLife () {
         lifes = lifes - 1;
+    }
+
+    public boolean isAlive () {
+        if (lifes > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     //metoder för att hämta spelarens x- och

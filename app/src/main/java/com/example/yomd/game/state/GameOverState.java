@@ -13,23 +13,8 @@ import com.example.yomd.simpleandroidgdf_monday.GameMainActivity;
 
 public class GameOverState extends State {
 
-    //variabel för att hålla koll på spelarens poäng
-    private String playerScore;
-    //variabel för text påp skärm
+    //variabel för text på skärm
     private String gameOverMessage = "GAME OVER";
-
-    //konstruktor alltså det som anropas
-    //när vi skriver new GameOverState()
-    public GameOverState(int playerScore){
-        //konvertera int till String m.h.a. + ""
-        this.playerScore = playerScore + "";
-        //kolla om vi fått nytt highscore
-        if(playerScore > GameMainActivity.getHighScore()){
-            //nytt highscore !!!!
-            GameMainActivity.setHighScore(playerScore);
-            gameOverMessage = "HIGH SCORE!";
-        }
-    }
 
     @Override
     public void init() {
@@ -54,14 +39,13 @@ public class GameOverState extends State {
         //fet text med storlek 50
         g.setFont(Typeface.DEFAULT_BOLD, 50);
         g.drawString(gameOverMessage, 257, 175);
-        g.drawString(playerScore, 385,250);
         g.drawString("Touch the screen", 220,350);
     }
 
     @Override
     public boolean onTouch(MotionEvent e, int scaledX, int scaledY) {
         if(e.getAction() == MotionEvent.ACTION_UP){
-            setCurrentState(new MenuState());
+            setCurrentState(new SelectLevelState());
         }
         return true;
     }
