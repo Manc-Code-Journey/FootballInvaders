@@ -2,9 +2,6 @@ package com.example.yomd.game.model;
 
 import android.graphics.Rect;
 
-import com.example.yomd.framework.util.RandomNumberGenerator;
-import com.example.yomd.game.state.SelectLevelState;
-
 /**
  * Created by tc980615 on 2017-02-16.
  */
@@ -14,6 +11,7 @@ public class Goal {
     private float x, y;
     private int width, height;
     private Rect rect;
+    private Ball ball;
 
     //konstruktorn till klassen
     //tar fyra inparametrar x- och y-position
@@ -26,13 +24,15 @@ public class Goal {
         this.height = height;
         //Bollens rektangel
         rect = new Rect();
+        updateRects();
     }
 
     //metod för att uppdatera bollens rektangel
     public void updateRects() {
-        rect.set((int) x + 10, (int) y, (int) x + (width - 20),
+        rect.set((int) x, (int) y, (int) x + (width),
                 (int) y + height);
     }
+
     //metoder för att hämta spelarens x- och
     //y-position
     public float getX(){
@@ -46,9 +46,11 @@ public class Goal {
     public int getWidth(){
         return width;
     }
-    public int getHeight() {
+    public int getHeight(){
         return height;
     }
 
-
+    public boolean onCollied (Ball ball) {
+        return rect.contains(ball.getRect());
+    }
 }

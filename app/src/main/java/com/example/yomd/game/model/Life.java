@@ -11,8 +11,8 @@ import com.example.yomd.simpleandroidgdf_monday.Assets;
 
 public class Life {
 
-    private static final int LIFE_WIDTH = 120;
-    private static final int LIFE_HEIGHT = 68;
+    private static final int LIFE_WIDTH = 50;
+    private static final int LIFE_HEIGHT = 51;
     private int lifes = 3;
 
     //variabler för x- och y-position
@@ -27,7 +27,7 @@ public class Life {
     }
     public void render(Painter g){
         for (int i = 0; i < lifes - 1; i++) {
-            g.drawImage(Assets.football, (int) x + LIFE_WIDTH / 2 * i,
+            g.drawImage(Assets.football, (int) x + (LIFE_WIDTH + 15) * i,
                     (int) y, LIFE_WIDTH, LIFE_HEIGHT);
         }
     }

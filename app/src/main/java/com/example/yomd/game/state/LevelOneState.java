@@ -23,8 +23,8 @@ public class LevelOneState extends State {
 
     private Ball ball;
     //ett par konstanter för spelarens bredd och höjd
-    private static final int BALL_WIDTH = 158;
-    private static final int BALL_HEIGHT = 85;
+    private static final int BALL_WIDTH = 50;
+    private static final int BALL_HEIGHT = 51;
 
     private Goal goal;
     private static final int GOAL_WIDTH = 250;
@@ -35,6 +35,7 @@ public class LevelOneState extends State {
     private float touchedX;
     private float touchedY;
 
+    private boolean canShoot= true;
 
     @Override
     public void init() {
@@ -45,9 +46,11 @@ public class LevelOneState extends State {
                 GameMainActivity.GAME_HEIGHT - 300 - GOAL_HEIGHT,
                 GOAL_WIDTH, GOAL_HEIGHT);
         life = new Life(GameMainActivity.GAME_WIDTH - GameMainActivity.GAME_WIDTH / 3,
-                GameMainActivity.GAME_HEIGHT - 32 - BALL_HEIGHT);
+                GameMainActivity.GAME_HEIGHT - 45 - BALL_HEIGHT);
 
         exitButton = new UIButton(0, 0, 100, 52, Assets.exit, Assets.exit);
+
+
 
     }
 
@@ -61,6 +64,11 @@ public class LevelOneState extends State {
             ball.setPosition(GameMainActivity.GAME_WIDTH / 2 - BALL_WIDTH / 2,
                     GameMainActivity.GAME_HEIGHT - 45 - BALL_HEIGHT);
             life.decreaseLife();
+
+            canShoot = true;
+        }
+        if (goal.onCollied(ball)) {
+            setCurrentState(new WinState());
         }
     }
 
@@ -93,7 +101,18 @@ public class LevelOneState extends State {
         }
         //Reagera när man tryckt klart på skärmen
         if (e.getAction() == MotionEvent.ACTION_UP) {
-            ball.setVelocities(scaledX - touchedX, scaledY - touchedY);
+            if(canShoot){
+                float dx = scaledX - touchedX;
+                float dy = scaledY - touchedY;
+
+                float dist = (float)Math.sqrt(dx*dx+dy*dy);
+
+                        if(dist>5) {
+                            ball.setVelocities(dx, dy);
+                            canShoot = false;
+                        }
+            }
+
 
             //om playknappen är aktiv och
             //man släpper skärmen

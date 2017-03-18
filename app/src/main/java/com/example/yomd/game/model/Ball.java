@@ -33,7 +33,7 @@ public class Ball {
         updateRects();
     }
     //metod för att uppdatera bollens rektangel
-    public void updateRects() {
+    private void updateRects() {
         rect.set((int) x + 10, (int) y, (int) x + (width - 20),
                 (int) y + height);
     }
@@ -60,6 +60,10 @@ public class Ball {
     }
     public int getHeight(){
         return height;
+    }
+
+    public Rect getRect () {
+        return rect;
     }
 
     public void setVelocities(float velX, float velY){
