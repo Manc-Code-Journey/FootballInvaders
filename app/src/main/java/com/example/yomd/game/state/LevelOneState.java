@@ -42,6 +42,7 @@ public class LevelOneState extends State {
 
     @Override
     public void init() {
+        exitButton = new UIButton(0, 0, 100, 52, Assets.exit, Assets.exit);
         ball = new Ball(GameMainActivity.GAME_WIDTH / 2 - BALL_WIDTH / 2,
                 GameMainActivity.GAME_HEIGHT - 45 - BALL_HEIGHT,
                 BALL_WIDTH, BALL_HEIGHT);
@@ -50,9 +51,6 @@ public class LevelOneState extends State {
                 GOAL_WIDTH, GOAL_HEIGHT);
         life = new Life(GameMainActivity.GAME_WIDTH - GameMainActivity.GAME_WIDTH / 3,
                 GameMainActivity.GAME_HEIGHT - 45 - BALL_HEIGHT);
-
-        exitButton = new UIButton(0, 0, 100, 52, Assets.exit, Assets.exit);
-
     }
 
     @Override
@@ -74,6 +72,7 @@ public class LevelOneState extends State {
         if (!life.isAlive()) {
             setCurrentState(new GameOverState());
         }
+        goal.update(delta);
     }
 
     @Override

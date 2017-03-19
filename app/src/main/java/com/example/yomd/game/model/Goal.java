@@ -3,6 +3,11 @@ package com.example.yomd.game.model;
 import android.graphics.Rect;
 
 import com.example.yomd.framework.util.RandomNumberGenerator;
+import com.example.yomd.simpleandroidgdf_monday.GameMainActivity;
+
+import static com.example.yomd.simpleandroidgdf_monday.GameMainActivity.GAME_HEIGHT;
+import static com.example.yomd.simpleandroidgdf_monday.GameMainActivity.GAME_WIDTH;
+import static com.example.yomd.simpleandroidgdf_monday.GameMainActivity.currentLevel;
 
 /**
  * Created by tc980615 on 2017-02-16.
@@ -15,7 +20,8 @@ public class Goal {
     private Rect rect;
     private Ball ball;
     private static final int Y = 100;
-    private boolean visible;
+    private float velX1 = 100;
+    private float velX2 = 180;
 
     //konstruktorn till klassen
     //tar fyra inparametrar x- och y-position
@@ -28,23 +34,30 @@ public class Goal {
         this.height = height;
         //målets rektangel
         rect = new Rect();
+
+    }
+    //får målet att röra sig i spelplan
+    public void update(float delta){
+        if (currentLevel == 2) {
+            x += velX1 * delta;
+            if ( x < 0) {
+                velX1 = -velX1;
+            }
+            if (x > GAME_WIDTH - width) {
+                velX1 = -velX1;
+            }
+        }
+        if (currentLevel == 3) {
+            x += velX2 * delta;
+            if ( x < 0) {
+                velX2 = -velX2;
+            }
+            if (x > GAME_WIDTH - width) {
+                velX2 = -velX2;
+            }
+        }
         updateRects();
-        visible = false;
     }
-    public void update(float delta, float velX){
-        x += velX * delta;
-        if (x <= -50){
-            reset();
-        }
-    }
-    public void reset(){
-    visible = true;
-        if (RandomNumberGenerator.getRandInt(2) == 0) {
-            y = Y;
-        }
-    }
-
-
 
     //metod för att uppdatera bollens rektangel
     public void updateRects() {

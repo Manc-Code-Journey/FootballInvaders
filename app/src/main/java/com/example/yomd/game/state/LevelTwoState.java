@@ -10,6 +10,8 @@ import com.example.yomd.game.model.Life;
 import com.example.yomd.simpleandroidgdf_monday.Assets;
 import com.example.yomd.simpleandroidgdf_monday.GameMainActivity;
 
+import static com.example.yomd.game.state.LevelOneState.currentLevel;
+
 /**
  * Created by tc980615 on 2017-02-23.
  */
@@ -37,6 +39,7 @@ public class LevelTwoState extends State {
 
     @Override
     public void init() {
+        exitButton = new UIButton(0, 0, 100, 52, Assets.exit, Assets.exit);
         ball = new Ball(GameMainActivity.GAME_WIDTH / 2 - BALL_WIDTH / 2,
                 GameMainActivity.GAME_HEIGHT - 45 - BALL_HEIGHT,
                 BALL_WIDTH, BALL_HEIGHT);
@@ -46,10 +49,7 @@ public class LevelTwoState extends State {
         life = new Life(GameMainActivity.GAME_WIDTH - GameMainActivity.GAME_WIDTH / 3,
                 GameMainActivity.GAME_HEIGHT - 45 - BALL_HEIGHT);
 
-        exitButton = new UIButton(0, 0, 100, 52, Assets.exit, Assets.exit);
-
-        LevelOneState.currentLevel = 2;
-
+        currentLevel = 2;
     }
 
     @Override
@@ -71,6 +71,7 @@ public class LevelTwoState extends State {
         if (!life.isAlive()) {
             setCurrentState(new GameOverState());
         }
+        goal.update(delta);
     }
 
     @Override
@@ -130,5 +131,7 @@ public class LevelTwoState extends State {
 
         return true;
     }
+
+
 
 }

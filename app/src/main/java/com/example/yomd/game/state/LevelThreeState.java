@@ -10,6 +10,8 @@ import com.example.yomd.game.model.Life;
 import com.example.yomd.simpleandroidgdf_monday.Assets;
 import com.example.yomd.simpleandroidgdf_monday.GameMainActivity;
 
+import static com.example.yomd.game.state.LevelOneState.currentLevel;
+
 /**
  * Created by Ann-Marie on 2017-03-09.
  */
@@ -25,8 +27,8 @@ public class LevelThreeState extends State{
     private static final int BALL_HEIGHT = 51;
 
     private Goal goal;
-    private static final int GOAL_WIDTH = 250;
-    private static final int GOAL_HEIGHT = 136;
+    private static final int GOAL_WIDTH = 220;
+    private static final int GOAL_HEIGHT = 118;
 
     private Life life;
 
@@ -37,19 +39,16 @@ public class LevelThreeState extends State{
 
     @Override
     public void init() {
+        exitButton = new UIButton(0, 0, 100, 52, Assets.exit, Assets.exit);
         ball = new Ball(GameMainActivity.GAME_WIDTH / 2 - BALL_WIDTH / 2,
                 GameMainActivity.GAME_HEIGHT - 45 - BALL_HEIGHT,
                 BALL_WIDTH, BALL_HEIGHT);
         goal = new Goal(GameMainActivity.GAME_WIDTH / 2 - GOAL_WIDTH / 2,
-                GameMainActivity.GAME_HEIGHT - 300 - GOAL_HEIGHT,
+                GameMainActivity.GAME_HEIGHT - 305 - GOAL_HEIGHT,
                 GOAL_WIDTH, GOAL_HEIGHT);
         life = new Life(GameMainActivity.GAME_WIDTH - GameMainActivity.GAME_WIDTH / 3,
                 GameMainActivity.GAME_HEIGHT - 45 - BALL_HEIGHT);
-
-        exitButton = new UIButton(0, 0, 100, 52, Assets.exit, Assets.exit);
-
-
-
+        currentLevel = 3;
     }
 
     @Override
@@ -71,6 +70,7 @@ public class LevelThreeState extends State{
         if (!life.isAlive()) {
             setCurrentState(new GameOverState());
         }
+        goal.update(delta);
     }
 
     @Override
@@ -130,5 +130,7 @@ public class LevelThreeState extends State{
 
         return true;
     }
+
+
 
 }
