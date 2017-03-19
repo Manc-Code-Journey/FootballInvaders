@@ -21,9 +21,9 @@ public class SelectLevelState extends State {
     @Override
     public void init() {
         //skapa de tre knapparna
-        level1 = new UIButton(40, 140, 120, 217, Assets.level1, Assets.level1);
-        level2 = new UIButton(150, 140, 230, 217, Assets.level2, Assets.level2);
-        level3 = new UIButton(260, 140, 340, 217, Assets.level3, Assets.level3);
+        level1 = new UIButton(40, 170, 120, 247, Assets.level1, Assets.level1);
+        level2 = new UIButton(150, 170, 230, 247, Assets.level2, Assets.level2);
+        level3 = new UIButton(260, 170, 340, 247, Assets.level3, Assets.level3);
         exitButton = new UIButton(0, 0, 100, 52, Assets.exit, Assets.exit);
     }
 
@@ -38,22 +38,11 @@ public class SelectLevelState extends State {
         //Rita upp welcome bilden på skärmen
         //Hämta bilden från Assets och
         //x- och y-värdet för övre vänstra hörnet är (0,0)
-        g.drawImage(Assets.levelplan, 0, 0);
-        renderSelect(g);
+        g.drawImage(Assets.selectlevelpic, 0, 0);
         level1.render(g);
         level2.render(g);
         level3.render(g);
         exitButton.render(g);
-    }
-
-    //rita ut poängen i spelet
-    private void renderSelect(Painter g) {
-        //bestäm font och färg för texten
-        g.setFont(Typeface.SANS_SERIF, 60);
-        g.setColor(Color.BLACK);
-        //skriv ut poängen
-        g.drawString("Select level", 250, 60);
-
     }
 
     @Override

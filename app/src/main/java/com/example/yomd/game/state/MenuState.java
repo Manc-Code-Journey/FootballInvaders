@@ -34,7 +34,7 @@ public class MenuState extends State {
         //Rita upp welcome bilden på skärmen
         //Hämta bilden från Assets och
         //x- och y-värdet för övre vänstra hörnet är (0,0)
-        g.drawImage(Assets.fotbollsplanmeny,0,0);
+        g.drawImage(Assets.menu,0,0);
         //rita ut de två knapparna
         selectlevelbutton.render(g);
     }
