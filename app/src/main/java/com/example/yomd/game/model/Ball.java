@@ -2,6 +2,8 @@ package com.example.yomd.game.model;
 
 import android.graphics.Rect;
 
+
+
 /**
  * Created by tc980615 on 2017-02-23.
  */
@@ -27,6 +29,7 @@ public class Ball {
         //Bollens rektangel
         rect = new Rect();
     }
+
     public void update(float delta){
         x = x + velX * delta;
         y = y + velY * delta;
@@ -36,6 +39,7 @@ public class Ball {
     private void updateRects() {
         rect.set((int) x + 10, (int) y, (int) x + (width - 20),
                 (int) y + height);
+
     }
 
     public void setPosition (float x, float y) {

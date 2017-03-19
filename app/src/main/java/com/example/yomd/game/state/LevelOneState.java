@@ -39,7 +39,6 @@ public class LevelOneState extends State {
 
     public static int currentLevel = 1;
 
-
     @Override
     public void init() {
         exitButton = new UIButton(0, 0, 100, 52, Assets.exit, Assets.exit);
@@ -110,10 +109,10 @@ public class LevelOneState extends State {
 
                 float dist = (float)Math.sqrt(dx*dx+dy*dy);
 
-                        if(dist>5) {
-                            ball.setVelocities(dx, dy);
-                            canShoot = false;
-                        }
+                if(dist>5) {
+                    ball.setVelocities(dx, dy);
+                    canShoot = false;
+                }
             }
 
 
@@ -132,6 +131,7 @@ public class LevelOneState extends State {
 
         return true;
     }
+
 
 
 }

@@ -15,16 +15,13 @@ import com.example.yomd.simpleandroidgdf_monday.Assets;
 public class MenuState extends State {
 
     //två UIknappar
-    private UIButton  scoreButton, selectlevelbutton;
+    private UIButton selectlevelbutton;
 
     @Override
     public void init() {
         //skapa de två knapparna
         selectlevelbutton = new UIButton(316,227,484,286,
                  Assets.selectlevel,Assets.selectlevel);
-        scoreButton = new UIButton(316,300,484,359,
-                Assets.score, Assets.scoreDown);
-
     }
 
     @Override
@@ -40,7 +37,6 @@ public class MenuState extends State {
         g.drawImage(Assets.fotbollsplanmeny,0,0);
         //rita ut de två knapparna
         selectlevelbutton.render(g);
-        scoreButton.render(g);
     }
 
     @Override
@@ -48,7 +44,6 @@ public class MenuState extends State {
         //Kolla vad man tryckt på
         if(e.getAction() == MotionEvent.ACTION_DOWN){
             selectlevelbutton.onTouchDown(scaledX,scaledY);
-            scoreButton.onTouchDown(scaledX,scaledY);
         }
         //Reagera när man tryckt klart på skärmen
         if(e.getAction() == MotionEvent.ACTION_UP){
@@ -59,15 +54,8 @@ public class MenuState extends State {
                 //se till att vi går till spelläget
                 //att spelet startar!
                 setCurrentState(new SelectLevelState());
-
-            }else if(scoreButton.isPressed(scaledX,scaledY)){
-                scoreButton.cancel();
-                //logga att man tryckt ner scorebutton
-                //Log.d("MenuState", "Score Button Pressed");
-                setCurrentState(new ScoreState());
             }else{
                 selectlevelbutton.cancel();
-                scoreButton.cancel();
             }
         }
         return true;

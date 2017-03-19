@@ -7,10 +7,11 @@ import android.view.MotionEvent;
 import com.example.yomd.framework.util.Painter;
 import com.example.yomd.simpleandroidgdf_monday.GameMainActivity;
 
+import static com.example.yomd.game.state.LevelOneState.currentLevel;
+
 /**
  * Created by Ann-Marie on 2017-03-18.
  */
-
 public class WinState extends State {
 
     //variabel för text på skärm
@@ -45,8 +46,8 @@ public class WinState extends State {
     @Override
     public boolean onTouch(MotionEvent e, int scaledX, int scaledY) {
         if(e.getAction() == MotionEvent.ACTION_UP){
-            setCurrentState(new LevelTwoState());
-        }
+                setCurrentState(new SelectLevelState());
+            }
         return true;
     }
 }
