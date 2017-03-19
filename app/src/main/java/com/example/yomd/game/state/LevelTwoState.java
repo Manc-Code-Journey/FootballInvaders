@@ -34,6 +34,7 @@ public class LevelTwoState extends State {
 
     private boolean canShoot= true;
 
+
     @Override
     public void init() {
         ball = new Ball(GameMainActivity.GAME_WIDTH / 2 - BALL_WIDTH / 2,
@@ -47,7 +48,7 @@ public class LevelTwoState extends State {
 
         exitButton = new UIButton(0, 0, 100, 52, Assets.exit, Assets.exit);
 
-
+        LevelOneState.currentLevel = 2;
 
     }
 

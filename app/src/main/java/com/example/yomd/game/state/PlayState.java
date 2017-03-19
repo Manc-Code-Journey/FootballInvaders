@@ -41,7 +41,6 @@ public class PlayState extends State {
     private static final int PLAYER_HEIGHT = 92;
 
     private float recentTouchY;
-    private Goal myGoal;
 
     private LevelOneState lOneState;
     private LevelTwoState lTwoState;
