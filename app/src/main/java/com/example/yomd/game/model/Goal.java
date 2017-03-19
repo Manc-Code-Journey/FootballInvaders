@@ -2,6 +2,8 @@ package com.example.yomd.game.model;
 
 import android.graphics.Rect;
 
+import com.example.yomd.framework.util.RandomNumberGenerator;
+
 /**
  * Created by tc980615 on 2017-02-16.
  */
@@ -12,6 +14,8 @@ public class Goal {
     private int width, height;
     private Rect rect;
     private Ball ball;
+    private static final int Y = 100;
+    private boolean visible;
 
     //konstruktorn till klassen
     //tar fyra inparametrar x- och y-position
@@ -22,10 +26,25 @@ public class Goal {
         this.y = y;
         this.width = width;
         this.height = height;
-        //Bollens rektangel
+        //målets rektangel
         rect = new Rect();
         updateRects();
+        visible = false;
     }
+    public void update(float delta, float velX){
+        x += velX * delta;
+        if (x <= -50){
+            reset();
+        }
+    }
+    public void reset(){
+    visible = true;
+        if (RandomNumberGenerator.getRandInt(2) == 0) {
+            y = Y;
+        }
+    }
+
+
 
     //metod för att uppdatera bollens rektangel
     public void updateRects() {
