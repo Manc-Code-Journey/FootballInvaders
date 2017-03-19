@@ -21,7 +21,7 @@ public class Goal {
     private Ball ball;
     private static final int Y = 100;
     private float velX1 = 100;
-    private float velX2 = 180;
+    private float velX2 = 200;
 
     //konstruktorn till klassen
     //tar fyra inparametrar x- och y-position
