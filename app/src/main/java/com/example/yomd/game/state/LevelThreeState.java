@@ -21,8 +21,8 @@ public class LevelThreeState extends State{
 
     private Ball ball;
     //ett par konstanter för spelarens bredd och höjd
-    private static final int BALL_WIDTH = 158;
-    private static final int BALL_HEIGHT = 85;
+    private static final int BALL_WIDTH = 50;
+    private static final int BALL_HEIGHT = 51;
 
     private Goal goal;
     private static final int GOAL_WIDTH = 250;
@@ -33,6 +33,7 @@ public class LevelThreeState extends State{
     private float touchedX;
     private float touchedY;
 
+    private boolean canShoot= true;
 
     @Override
     public void init() {
@@ -43,17 +44,32 @@ public class LevelThreeState extends State{
                 GameMainActivity.GAME_HEIGHT - 300 - GOAL_HEIGHT,
                 GOAL_WIDTH, GOAL_HEIGHT);
         life = new Life(GameMainActivity.GAME_WIDTH - GameMainActivity.GAME_WIDTH / 3,
-                GameMainActivity.GAME_HEIGHT - 32 - BALL_HEIGHT);
+                GameMainActivity.GAME_HEIGHT - 45 - BALL_HEIGHT);
 
         exitButton = new UIButton(0, 0, 100, 52, Assets.exit, Assets.exit);
+
+
 
     }
 
     @Override
     public void update(float delta) {
         ball.update(delta);
-        if(ball.getX() < 0){
+        if(ball.getX() +  ball.getWidth() < 0 || ball.getY() + ball.getHeight() < 0 ||
+                ball.getX() > GameMainActivity.GAME_WIDTH
+                || ball.getY() > GameMainActivity.GAME_HEIGHT){
             ball.setVelocities(0,0);
+            ball.setPosition(GameMainActivity.GAME_WIDTH / 2 - BALL_WIDTH / 2,
+                    GameMainActivity.GAME_HEIGHT - 45 - BALL_HEIGHT);
+            life.decreaseLife();
+
+            canShoot = true;
+        }
+        if (goal.onCollied(ball)) {
+            setCurrentState(new WinState());
+        }
+        if (!life.isAlive()) {
+            setCurrentState(new GameOverState());
         }
     }
 
@@ -86,7 +102,18 @@ public class LevelThreeState extends State{
         }
         //Reagera när man tryckt klart på skärmen
         if (e.getAction() == MotionEvent.ACTION_UP) {
-            ball.setVelocities(scaledX - touchedX, scaledY - touchedY);
+            if(canShoot){
+                float dx = scaledX - touchedX;
+                float dy = scaledY - touchedY;
+
+                float dist = (float)Math.sqrt(dx*dx+dy*dy);
+
+                if(dist>5) {
+                    ball.setVelocities(dx, dy);
+                    canShoot = false;
+                }
+            }
+
 
             //om playknappen är aktiv och
             //man släpper skärmen
@@ -100,6 +127,8 @@ public class LevelThreeState extends State{
             }
         }
 
+
         return true;
     }
+
 }

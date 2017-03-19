@@ -27,8 +27,8 @@ public class LevelOneState extends State {
     private static final int BALL_HEIGHT = 51;
 
     private Goal goal;
-    private static final int GOAL_WIDTH = 250;
-    private static final int GOAL_HEIGHT = 136;
+    private static final int GOAL_WIDTH = 280;
+    private static final int GOAL_HEIGHT = 150;
 
     private Life life;
 
@@ -43,7 +43,7 @@ public class LevelOneState extends State {
                 GameMainActivity.GAME_HEIGHT - 45 - BALL_HEIGHT,
                 BALL_WIDTH, BALL_HEIGHT);
         goal = new Goal(GameMainActivity.GAME_WIDTH / 2 - GOAL_WIDTH / 2,
-                GameMainActivity.GAME_HEIGHT - 300 - GOAL_HEIGHT,
+                GameMainActivity.GAME_HEIGHT - 280 - GOAL_HEIGHT,
                 GOAL_WIDTH, GOAL_HEIGHT);
         life = new Life(GameMainActivity.GAME_WIDTH - GameMainActivity.GAME_WIDTH / 3,
                 GameMainActivity.GAME_HEIGHT - 45 - BALL_HEIGHT);
@@ -69,6 +69,9 @@ public class LevelOneState extends State {
         }
         if (goal.onCollied(ball)) {
             setCurrentState(new WinState());
+        }
+        if (!life.isAlive()) {
+            setCurrentState(new GameOverState());
         }
     }
 

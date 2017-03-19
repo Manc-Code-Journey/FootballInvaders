@@ -45,7 +45,7 @@ public class WinState extends State {
     @Override
     public boolean onTouch(MotionEvent e, int scaledX, int scaledY) {
         if(e.getAction() == MotionEvent.ACTION_UP){
-            setCurrentState(new SelectLevelState());
+            setCurrentState(new LevelTwoState());
         }
         return true;
     }
