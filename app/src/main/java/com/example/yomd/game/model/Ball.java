@@ -2,6 +2,7 @@ package com.example.yomd.game.model;
 
 import android.graphics.Rect;
 
+import static com.example.yomd.simpleandroidgdf_monday.GameMainActivity.GAME_HEIGHT;
 
 
 /**
@@ -55,8 +56,6 @@ public class Ball {
     public float getY(){
         return y;
     }
-    public float getVelY(){ return velY; }
-    public float getVelX(){ return velX; }
     //metoder som returnerar bredd
     // och höjd för spelaren
     public int getWidth(){

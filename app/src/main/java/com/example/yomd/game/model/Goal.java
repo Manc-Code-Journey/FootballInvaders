@@ -18,8 +18,6 @@ public class Goal {
     private float x, y;
     private int width, height;
     private Rect rect;
-    private Ball ball;
-    private static final int Y = 100;
     private float velX1 = 100;
     private float velX2 = 200;
 
@@ -75,9 +73,6 @@ public class Goal {
     }
     //metoder som returnerar bredd
     // och höjd för spelaren
-    public int getWidth(){
-        return width;
-    }
     public int getHeight(){
         return height;
     }

@@ -13,7 +13,7 @@ public class Life {
 
     private static final int LIFE_WIDTH = 50;
     private static final int LIFE_HEIGHT = 51;
-    private int lifes = 3;
+    private int lives = 3;
 
     //variabler för x- och y-position
     private float x, y;
@@ -26,18 +26,18 @@ public class Life {
         this.y = y;
     }
     public void render(Painter g){
-        for (int i = 0; i < lifes - 1; i++) {
+        for (int i = 0; i < lives - 1; i++) {
             g.drawImage(Assets.football, (int) x + (LIFE_WIDTH + 15) * i,
                     (int) y, LIFE_WIDTH, LIFE_HEIGHT);
         }
     }
 
     public void decreaseLife () {
-        lifes = lifes - 1;
+        lives = lives - 1;
     }
 
     public boolean isAlive () {
-        if (lifes > 0) {
+        if (lives > 0) {
             return true;
         } else {
             return false;
