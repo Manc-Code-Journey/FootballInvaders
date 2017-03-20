@@ -20,7 +20,7 @@ public class MenuState extends State {
     @Override
     public void init() {
         //skapa de två knapparna
-        selectlevelbutton = new UIButton(316,227,484,286,
+        selectlevelbutton = new UIButton(196,247,424,306,
                  Assets.selectlevel,Assets.selectlevel);
     }
 

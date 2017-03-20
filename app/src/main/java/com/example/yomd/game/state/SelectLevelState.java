@@ -21,9 +21,9 @@ public class SelectLevelState extends State {
     @Override
     public void init() {
         //skapa de tre knapparna
-        level1 = new UIButton(40, 170, 120, 247, Assets.level1, Assets.level1);
-        level2 = new UIButton(150, 170, 230, 247, Assets.level2, Assets.level2);
-        level3 = new UIButton(260, 170, 340, 247, Assets.level3, Assets.level3);
+        level1 = new UIButton(40, 190, 120, 267, Assets.level1, Assets.level1);
+        level2 = new UIButton(150, 190, 230, 267, Assets.level2, Assets.level2);
+        level3 = new UIButton(260, 190, 340, 267, Assets.level3, Assets.level3);
         exitButton = new UIButton(0, 0, 100, 52, Assets.exit, Assets.exit);
     }
 
